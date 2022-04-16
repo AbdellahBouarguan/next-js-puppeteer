@@ -3,7 +3,11 @@
 if you are using arch or any kernel that use pacman to this
 install node prefer LTS to be able to use npm:
 ```bash
-sudo pacman -Ss nodejs-lts-gallium
+sudo pacman -S node
+```
+or 
+```bash
+sudo pacman -S nodejs-lts-gallium
 ```
 go to your workspace and clone this repo:
 ```bash 
