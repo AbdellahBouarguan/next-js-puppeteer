@@ -1,7 +1,7 @@
 (By Abdellah)
 # First of ALL
 if you are using arch or any kernel that use pacman to this
-install node prefer LTS to be able to use npm:
+install node to be able to use npm:
 ```bash
 sudo pacman -S node
 ```
