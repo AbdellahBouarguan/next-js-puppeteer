@@ -1,5 +1,16 @@
 (By Abdellah)
 # First of ALL
+if you are using arch or any kernel that use pacman to this
+install node prefer LTS to be able to use npm:
+```bash
+sudo pacman -Ss nodejs-lts-gallium
+```
+go to your workspace and clone this repo:
+```bash 
+git clone https://github.com/AbdellahBouarguan/next-js-puppeteer.git
+cd next-js-puppeteer
+```
+then install dependencies and run the development server
 ```bash
 npm install
 npm run dev
