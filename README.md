@@ -35,12 +35,3 @@ Check out our [Next.js deployment documentation](https://nextjs.org/docs/deploym
 
 ##Abdellah Bouargaun TEST
 # next-js-puppeteer
-# next-js-puppeteer
-# next-js-puppeteer
-# next-js-puppeteer
-# next-js-puppeteer
-# next-js-puppeteer
-# next-js-puppeteer
-# next-js-puppeteer
-# next-js-puppeteer
-# next-js-puppeteer
