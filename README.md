@@ -1,5 +1,9 @@
 (By Abdellah)
 # First of ALL
+if you are using Debian (ubuntu/Kali linux)
+```bash 
+sudo apt-get install nodejs
+```
 if you are using arch or any kernel that use pacman to this
 install node to be able to use npm:
 ```bash
