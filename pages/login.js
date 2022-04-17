@@ -31,14 +31,12 @@ function Login(props) {
         onChange={(e) => setUserInput(e.target.value)}
         type="email"
         placeholder="Username"
-        //value="B133068333@taalim.ma"
       />
       <input
         ref={inputPassRef}
         onChange={(e) => setPassInput(e.target.value)}
         type="password"
         placeholder="Password"
-        //value="Abdellah@2005"
       />
       <button onClick={clickMe}>Go</button>
       <div>{props.usr}</div>
