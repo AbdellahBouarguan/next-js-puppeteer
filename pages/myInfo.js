@@ -5,8 +5,7 @@ function myInfo(props) {
 
   return (
     <div>
-      <h1>{props.usr}</h1>
-      <h2>{props.pass}</h2>
+      <h1>Info Page</h1>
       <button
         onClick={() => {
           axios
