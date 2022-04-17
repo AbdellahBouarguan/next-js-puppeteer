@@ -23,12 +23,32 @@ async function handler(req, res) {
       await page.select("select#SelectedSession.form-control", "1");
       await page.click("#btnSearchNotes");
       await page.waitForNetworkIdle();
+
       //const marks = await page.$eval("#tab_cc", (el) => el.innerText.trim());
       const marks = await page.evaluate(() => {
-        const slctDt = document.querySelector("#tab_cc");
-        return slctDt.innerHTML;
+        let lst = [];
+        let lsth = [];
+        let lstb = [];
+        for (let i = 1; i < 7; i++) {
+          const el1 = document.querySelector(`#tab_cc th:nth-child(${i})`);
+          lsth.push(el1.innerText.trim());
+        }
+
+        for (let i = 1; i < 12; i++) {
+          let lstbc = [];
+          for (let j = 1; j < 7; j++) {
+            const el1 = document.querySelector(
+              `#tab_cc tr:nth-child(${i}) td:nth-child(${j})`
+            );
+            lstbc.push(el1.innerText.trim());
+          }
+          lstb.push(lstbc);
+        }
+        lst.push(lsth);
+        lst.push(lstb);
+        return lst;
       });
-      scr = { text: title, info: marks };
+      scr = { text: title, tHead: marks[0], tBody: marks[1] };
       console.log(marks);
       browser.close();
     };

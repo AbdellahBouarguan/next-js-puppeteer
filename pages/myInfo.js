@@ -2,6 +2,11 @@ import axios from "axios";
 import { useState } from "react";
 function myInfo(props) {
   const [scrData, setScrData] = useState({});
+  const [tableHead, setTableHead] = useState([]);
+  const [tableBody, setTableBody] = useState(
+    [[]]
+    //Array.from({ length: 11 }, () => Array.from({ length: 11 }, () => null))
+  );
 
   return (
     <div>
@@ -10,14 +15,37 @@ function myInfo(props) {
         onClick={() => {
           axios
             .post("/api", { usr: props.usr, pass: props.pass })
-            .then((res) => setScrData(res.data));
+            .then((res) => {
+              setScrData(res.data);
+              setTableHead(res.data.tHead);
+              setTableBody(res.data.tBody);
+            });
           console.log(scrData);
         }}
       >
-        update info
+        get info
       </button>
       <h3>{scrData.text}</h3>
-      <div>{scrData.info}</div>
+      <div className="arRead">
+        <table>
+          <thead>
+            <tr>
+              {tableHead.map((i, key) => (
+                <th key={key}>{i}</th>
+              ))}
+            </tr>
+          </thead>
+          <tbody>
+            {tableBody.map((i, key) => (
+              <tr key={key}>
+                {i.map((j, key) => (
+                  <td key={key}>{j}</td>
+                ))}
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
     </div>
   );
 }
