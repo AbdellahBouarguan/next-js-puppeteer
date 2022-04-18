@@ -55,10 +55,15 @@ function myInfo(props) {
           csv.push(tableHead);
           tableBody.forEach((i) => csv.push(i));
           console.log(csv);
-          let csvFile = new Blob([csv], { type: "text/csv" });
+          var scvDt = "";
+          csv.forEach((row) => {
+            scvDt += row.join(";");
+            scvDt += "\n";
+          });
+          //let csvFile = new Blob(csv, { type: "text/csv" });
           dLink = document.createElement("a");
           dLink.download = "result";
-          dLink.href = window.URL.createObjectURL(csvFile);
+          dLink.href = "data:text/csv;charset=utf-8," + encodeURI(scvDt);
           dLink.text = "download it";
 
           e.currentTarget.parentElement.appendChild(dLink);
