@@ -2,6 +2,7 @@ import axios from "axios";
 import { useState } from "react";
 function myInfo(props) {
   const [scrData, setScrData] = useState({});
+  const [isCsv, setIsCsv] = useState(false);
   const [tableHead, setTableHead] = useState([]);
   const [tableBody, setTableBody] = useState(
     [[]]
@@ -12,15 +13,15 @@ function myInfo(props) {
     <div>
       <h1>Info Page</h1>
       <button
-        onClick={() => {
-          axios
+        onClick={async () => {
+          await axios
             .post("/api", { usr: props.usr, pass: props.pass })
             .then((res) => {
               setScrData(res.data);
               setTableHead(res.data.tHead);
               setTableBody(res.data.tBody);
+              setIsCsv(true);
             });
-          console.log(scrData);
         }}
       >
         get info
@@ -46,6 +47,26 @@ function myInfo(props) {
           </tbody>
         </table>
       </div>
+      <button
+        style={!isCsv ? { display: "none" } : { display: "block" }}
+        onClick={(e) => {
+          let csv = [];
+          let dLink;
+          csv.push(tableHead);
+          tableBody.forEach((i) => csv.push(i));
+          console.log(csv);
+          let csvFile = new Blob([csv], { type: "text/csv" });
+          dLink = document.createElement("a");
+          dLink.download = "result";
+          dLink.href = window.URL.createObjectURL(csvFile);
+          dLink.text = "download it";
+
+          e.currentTarget.parentElement.appendChild(dLink);
+          e.currentTarget.style.display = "none";
+        }}
+      >
+        download scv file
+      </button>
     </div>
   );
 }

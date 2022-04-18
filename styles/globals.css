@@ -13,6 +13,7 @@ body {
 
 * {
   box-sizing: border-box;
+  text-align: center;
 }
 
 .container {
@@ -29,7 +30,7 @@ input {
 }
 .arRead {
   direction: rtl;
-  margin: 50px;
+  display: inline-flex;
 }
 td {
   border: 2px solid #aaa;
